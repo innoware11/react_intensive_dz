@@ -8,7 +8,7 @@ TodoItem.propTypes = {
 export default function TodoItem({item, changed, removed}) {    
 
     return <Progress
-                max={item.max}
+                max={parseInt(item.max)}
                 value={item.value}
                 title={item.title}                
                 changed={newVal => changed(newVal)}
