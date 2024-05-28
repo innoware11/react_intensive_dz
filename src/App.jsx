@@ -1,9 +1,11 @@
 import React, { useState, useRef } from 'react';
 import { Alert, Button } from 'react-bootstrap';
 import useClickOutside from './Hooks/useClickOutside';
+import useFetch from './Hooks/useFetch';
 
 function App() {
     const [show, setShow] = useState(true);
+    const productsRequest = useFetch('http://faceprog.ru/reactcourseapi/products/all.php')
     const alertRef = useRef(null);
     const btnAlertRef = useRef(null);
 
@@ -11,6 +13,12 @@ function App() {
 
     return (
         <div>
+            { productsRequest.done && productsRequest.data &&
+                <pre>
+                    {productsRequest.data}
+                </pre>
+            }
+            <hr/>
             {show ? (
                 <Alert variant="danger" onClose={() => setShow(false)} dismissible ref={alertRef}>
                     <Alert.Heading>Oh snap! You got an error!</Alert.Heading>

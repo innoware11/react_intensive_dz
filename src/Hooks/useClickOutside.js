@@ -20,5 +20,5 @@ export default function useClickOutside(elemRefs, setShow) {
         return () => {
             document.removeEventListener('click', handleClick);
         };
-    }, [elemRefs, setShow]);
+    }, []);
 }
